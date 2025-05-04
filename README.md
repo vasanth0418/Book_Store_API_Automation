@@ -124,11 +124,3 @@ Every push to `main` triggers:
 - Reports → `/target/allure-report`
 
 ---
-
-## 🤝 **Contributions & Enhancements:**
-
-Want to extend this framework? Ideas include:
-- Security testing integration
-- Parallel execution tuning
-- API schema validation
-- Performance API tests (e.g., RestAssured + JMeter)
