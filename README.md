@@ -1,14 +1,15 @@
-# Book_Store_API_Automation
 📚 Bookstore API Automation Framework with CI/CD (RestAssured + TestNG)
 💻 Tech Stack Overview
-Component	Description
-🧠 IDE	IntelliJ IDEA / Eclipse
-☕ Language	Java 11+
-🔄 Framework	RestAssured + TestNG – Structured, maintainable API automation
-🛠 Build Tool	Maven – Dependency & build management
-📊 Reporting	Allure Report – Rich UI for test results & trends
-✅ Test Execution	TestNG – Parallel execution, flexible grouping, retry mechanisms
-🚀 CI/CD	GitHub Actions – Automates test execution + artifact upload
+| Component            | Description                                                      |
+| -------------------- | ---------------------------------------------------------------- |
+| 🧠 **IDE**           | IntelliJ IDEA / Eclipse                                          |
+| ☕ **Language**       | Java 11+                                                         |
+| 🔄 **Framework**     | RestAssured + TestNG – Structured, maintainable API automation   |
+| 🛠 **Build Tool**    | Maven – Dependency & build management                            |
+| 📊 **Reporting**     | Allure Report – Rich UI for test results & trends                |
+| ✅ **Test Execution** | TestNG – Parallel execution, flexible grouping, retry mechanisms |
+| 🚀 **CI/CD**         | GitHub Actions – Automates test execution + artifact upload      |
+
 
 🧪 Why This Stack?
 ✅ TestNG over JUnit:
