@@ -1,10 +1,8 @@
-name: API Automation CI
+name: Minimal CI
 
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
-  pull_request:
     branches: [ main ]
 
 jobs:
@@ -12,34 +10,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Set up JDK 11
+    - name: Set up Java
       uses: actions/setup-java@v3
       with:
         distribution: 'temurin'
         java-version: '11'
 
-    - name: Cache Maven packages
-      uses: actions/cache@v3
-      with:
-        path: ~/.m2
-        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-        restore-keys: ${{ runner.os }}-maven
-
-    - name: Install dependencies and run tests
+    - name: Build and test
       run: mvn clean test
-
-    - name: Generate Allure Report
-      uses: simple-elf/allure-report-action@v1.6
-      with:
-        allure_results: target/allure-results
-        allure_report: target/allure-report
-        keep_reports: true
-
-    - name: Upload Allure Report
-      uses: actions/upload-artifact@v2
-      with:
-        name: allure-report
-        path: target/allure-report
