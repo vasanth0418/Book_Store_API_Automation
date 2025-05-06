@@ -1,4 +1,4 @@
-name: Minimal CI
+name: API Automation CI
 
 on:
   workflow_dispatch:
@@ -31,11 +31,37 @@ jobs:
 
     - name: Start FastAPI server
       run: uvicorn app:app --host 0.0.0.0 --port 8000 &
-    
+
     - name: Wait for API to be ready
       run: |
         echo "Waiting for API to start..."
         sleep 10
 
+    - name: Cache Maven packages
+      uses: actions/cache@v3
+      with:
+        path: ~/.m2
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: ${{ runner.os }}-maven
+
     - name: Build and test
       run: mvn clean test
+
+    - name: Upload Allure Results
+      uses: actions/upload-artifact@v3
+      with:
+        name: allure-results
+        path: target/allure-results
+
+    - name: Generate Allure Report
+      uses: simple-elf/allure-report-action@v1.6
+      with:
+        allure_results: target/allure-results
+        allure_report: target/allure-report
+        keep_reports: true
+
+    - name: Upload Allure Report
+      uses: actions/upload-artifact@v3
+      with:
+        name: allure-report
+        path: target/allure-report
